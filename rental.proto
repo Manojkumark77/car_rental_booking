@@ -1,0 +1,312 @@
+syntax = "proto3";
+
+package carrental;
+option go_package = "./pb";
+
+import "google/api/annotations.proto";
+
+service CustomerService {
+    rpc CreateCustomer (Customer) returns (CustomerResponse) {
+        option (google.api.http) = {
+            post: "/customers"
+            body: "*"
+        };
+    }
+    rpc GetCustomer (CustomerRequest) returns (Customer) {
+        option (google.api.http) = {
+            get: "/customers/{id}"
+        };
+    }
+    rpc ListCustomers (Empty) returns (CustomerList) {
+        option (google.api.http) = {
+            get: "/customers"
+        };
+    }
+    rpc UpdateCustomer (Customer) returns (CustomerResponse) {
+        option (google.api.http) = {
+            put: "/customers/{id}"
+            body: "*"
+        };
+    }
+    rpc DeleteCustomer (CustomerRequest) returns (CustomerResponse) {
+        option (google.api.http) = {
+            delete: "/customers/{id}"
+        };
+    }
+}
+
+
+service AdminService {
+    rpc CreateAdmin (Admin) returns (AdminResponse) {
+        option (google.api.http) = {
+            post: "/admins"
+            body: "*"
+        };
+    }
+    rpc GetAdmin (AdminRequest) returns (Admin) {
+        option (google.api.http) = {
+            get: "/admins/{id}"
+        };
+    }
+    rpc ListAdmins (Empty) returns (AdminList) {
+        option (google.api.http) = {
+            get: "/admins"
+        };
+    }
+    rpc UpdateAdmin (Admin) returns (AdminResponse) {
+        option (google.api.http) = {
+            put: "/admins/{id}"
+            body: "*"
+        };
+    }
+    rpc DeleteAdmin (AdminRequest) returns (AdminResponse) {
+        option (google.api.http) = {
+            delete: "/admins/{id}"
+        };
+    }
+}
+
+service VehicleService {
+    rpc CreateVehicle (Vehicle) returns (VehicleResponse) {
+        option (google.api.http) = {
+            post: "/vehicles"
+            body: "*"
+        };
+    }
+    rpc GetVehicle (VehicleRequest) returns (Vehicle) {
+        option (google.api.http) = {
+            get: "/vehicles/{id}"
+        };
+    }
+    rpc ListVehicles (Empty) returns (VehicleList) {
+        option (google.api.http) = {
+            get: "/vehicles"
+        };
+    }
+    rpc UpdateVehicle (Vehicle) returns (VehicleResponse) {
+        option (google.api.http) = {
+            put: "/vehicles/{id}"
+            body: "*"
+        };
+    }
+    rpc DeleteVehicle (VehicleRequest) returns (VehicleResponse) {
+        option (google.api.http) = {
+            delete: "/vehicles/{id}"
+        };
+    }
+}
+
+service BookingService {
+    rpc CreateBooking (Booking) returns (BookingResponse) {
+        option (google.api.http) = {
+            post: "/bookings"
+            body: "*"
+        };
+    }
+    rpc GetBooking (BookingRequest) returns (Booking) {
+        option (google.api.http) = {
+            get: "/bookings/{id}"
+        };
+    }
+    rpc ListBookings (Empty) returns (BookingList) {
+        option (google.api.http) = {
+            get: "/bookings"
+        };
+    }
+    rpc UpdateBooking (Booking) returns (BookingResponse) {
+        option (google.api.http) = {
+            put: "/bookings/{id}"
+            body: "*"
+        };
+    }
+    rpc DeleteBooking (BookingRequest) returns (BookingResponse) {
+        option (google.api.http) = {
+            delete: "/bookings/{id}"
+        };
+    }
+}
+
+service PaymentService {
+    rpc CreatePayment (Payment) returns (PaymentResponse) {
+        option (google.api.http) = {
+            post: "/payments"
+            body: "*"
+        };
+    }
+    rpc GetPayment (PaymentRequest) returns (Payment) {
+        option (google.api.http) = {
+            get: "/payments/{id}"
+        };
+    }
+    rpc ListPayment (Empty) returns (PaymentList) {
+        option (google.api.http) = {
+            get: "/payments"
+        };
+    }
+    rpc UpdatePayment (Payment) returns (PaymentResponse) {
+        option (google.api.http) = {
+            put: "/payments/{id}"
+            body: "*"
+        };
+    }
+    rpc DeletePayment (PaymentRequest) returns (PaymentResponse) {
+        option (google.api.http) = {
+            delete: "/payments/{id}"
+        };
+    }
+}
+
+service ReviewService {
+    rpc CreateReview (Review) returns (ReviewResponse) {
+        option (google.api.http) = {
+            post: "/reviews"
+            body: "*"
+        };
+    }
+    rpc GetReview (ReviewRequest) returns (Review) {
+        option (google.api.http) = {
+            get: "/reviews/{id}"
+        };
+    }
+    rpc ListReviews (Empty) returns (ReviewList) {
+        option (google.api.http) = {
+            get: "/reviews"
+        };
+    }
+    rpc UpdateReview (Review) returns (ReviewResponse) {
+        option (google.api.http) = {
+            put: "/reviews/{id}"
+            body: "*"
+        };
+    }
+    rpc DeleteReview (ReviewRequest) returns (ReviewResponse) {
+        option (google.api.http) = {
+            delete: "/reviews/{id}"
+        };
+    }
+}
+
+message Customer {
+    int32 id = 1;
+    string name = 2;
+    string contact = 3;
+    string address = 4;
+    string license_number = 5;
+}
+
+message CustomerRequest {
+    int32 id = 1;
+}
+
+message CustomerResponse {
+    string message = 1;
+}
+
+message CustomerList {
+    repeated Customer customers = 1;
+}
+
+message Admin {
+    int32 id = 1;
+    string name = 2;
+    string contact = 3;
+    string role = 4; 
+    string address = 5;
+}
+
+message AdminRequest {
+    int32 id = 1;
+}
+
+message AdminResponse {
+    string message = 1;
+}
+
+message AdminList {
+    repeated Admin admins = 1;
+}
+
+message Vehicle {
+    int32 id = 1;
+    string model = 2;
+    int32 year = 3;
+    double rental_rate = 4;
+    string availability = 5;
+    string type = 6;
+    int32 mileage = 7;
+}
+
+message VehicleRequest {
+    int32 id = 1;
+}
+
+message VehicleResponse {
+    string message = 1;
+}
+
+message VehicleList {
+    repeated Vehicle vehicles = 1;
+}
+
+message Booking {
+    int32 id = 1;
+    int32 customer_id = 2;
+    int32 vehicle_id = 3;
+    string start_date = 4;
+    string end_date = 5;
+    string status = 6;
+}
+
+message BookingRequest {
+    int32 id = 1;
+}
+
+message BookingResponse {
+    string message = 1;
+}
+
+message BookingList {
+    repeated Booking bookings = 1;
+}
+
+message Payment {
+    int32 id = 1;
+    int32 bookingId = 2;
+    double amount = 3;
+    string paymentMethod = 4;  
+    string status = 5;         
+}
+
+message PaymentRequest {
+    int32 id = 1;
+}
+
+message PaymentResponse {
+    string message = 1;
+}
+
+message PaymentList {
+    repeated Payment payments = 1;
+}
+
+message Review {
+    int32 id = 1;
+    int32 customerId = 2;
+    int32 vehicleId = 3;
+    int32 rating = 4; 
+    string comments = 5;
+}
+
+message ReviewRequest {
+    int32 id = 1;
+}
+
+message ReviewResponse {
+    string message = 1;
+}
+
+message ReviewList {
+    repeated Review reviews = 1;
+}
+
+message Empty {}
