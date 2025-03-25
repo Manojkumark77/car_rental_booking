@@ -1,0 +1,6 @@
+car:
+  username: "root"
+  password: "Manoj"
+  db_host: "127.0.0.1"
+  db_port: 3307
+  db_name: "car_rental"
